@@ -1,0 +1,23 @@
+{%extends 'users/base.html' %}
+{% block title %}login{% endblock %}
+{% block content %}
+    <form method="post" action="{% url 'register' %}">
+        {% csrf_token %}
+        <table>
+            {% for field in form %}
+            <tr>
+                <td>
+                    <p> {{field.label}}: </p>
+                    <p> {{ field }}</p>
+                    <p>{{ field.errors }}</p>
+                </td>
+            </tr>
+        {% endfor %}
+        </table>
+        <input type="submit" value="register">
+
+    </form>
+
+{% endblock %}
+
+

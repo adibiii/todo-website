@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'users/base.css'%}">
+    {% block style %}{% endblock %}
+</head>
+<body>
+    {% if user.is_authenticated %}
+        <ul>
+            <li><a href="{% url 'todohome' %}">Todo</a></li>
+            <li><a href="{% url 'logout'%}">logout</a></li>
+            <li style="float:right"><a href="#about">About</a>
+        </ul>
+    {% else %}
+        <ul>
+            <li><a href="{% url 'userhome' %}">Todo</a></li>
+            <li><a href="{% url 'login' %}">login</a> </li>
+            <li><a href="{% url 'register' %}">register</a></li>
+            <li style="float:right"><a href="#about">About</a></li>
+        </ul>
+    {% endif %}
+
+    {% block content %}
+    {% endblock %}
+</body>
+</html>
